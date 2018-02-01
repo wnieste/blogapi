@@ -4,6 +4,8 @@ const port = 8088 ;
 const ipaddr = '127.0.0.1' ;
 const server = http.createServer( handle_request ).listen( port, ipaddr ) ;
 
+const blogapi = require( './modules/blogpost' ) ;
+
 console.log( 'Started Node.js http server at http://127.0.0.1:' + port ) ;
 
 function handle_GET_request( response )  {
@@ -45,10 +47,10 @@ function handle_request( request, response )
   switch ( request.method ) 
   {
     case 'GET' :
-      handle_GET_request( response ) ;
+      blogapi.GET( response ) ;
       break ;
     case 'POST' :
-      handle_POST_request( response ) ;
+      blogapi.POST( response ) ;
       break ;
     default:
       handle_unknown_request( response ) ;
