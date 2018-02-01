@@ -1,4 +1,4 @@
-function handle_GET_request( request, response )  {
+function handle_GET_request( request, response, dbHandle )  {
   //  the /posts endpoint must use the GET method
   if (request.method != 'GET' )
   {
@@ -9,14 +9,25 @@ function handle_GET_request( request, response )  {
   }
   else
   {
+    let sqlQuery = 'SELECT post_id as ID,  title as TITLE, body as POST from posts' ;
+
     response.writeHead( 200,  {
-      'Content-Type' : 'text/plain'
+      'Content-Type' : 'application/json'
     } ) ;
-    response.end( 'GET action executed' ) ;
+    response.write( '{ "blogposts": ' ) ;
+    // loop through blog posts
+    dbHandle.all( sqlQuery, [], (err, row ) =>  {
+      if (err) {
+        throw err ;
+      }
+        let blogPost = JSON.stringify( row ) ;
+        console.log( blogPost ) ;
+        response.write( blogPost, function( error ) { response.end( ' } ' ) } ) ;
+    } ) ;
   }
 }
 
-function handle_POST_request( request, response )  {
+function handle_POST_request( request, response, dbHandle )  {
   //  the /post endpoint must use the POST method
   if (request.method != 'POST' )
   {
