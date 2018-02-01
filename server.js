@@ -4,7 +4,11 @@ const port = 8088 ;
 const ipaddr = '127.0.0.1' ;
 const server = http.createServer( handle_request ).listen( port, ipaddr ) ;
 
-const blogapi = require( './modules/blogpost' ) ;
+const blogapi  = require( './modules/blogpost' ) ;
+const sqlite3  = require( 'sqlite3' ) ;
+
+let blogdb = new sqlite3.Database( './database/blog.db' ) ;
+
 
 console.log( 'Started Node.js http server at http://127.0.0.1:' + port ) ;
 
@@ -25,10 +29,10 @@ function handle_request( request, response )
   switch ( request.url ) 
   {
     case '/posts' :
-      blogapi.fetchEntries( request, response ) ;
+      blogapi.fetchEntries( request, response, blogdb ) ;
       break ;
     case '/post' :
-      blogapi.createEntry( request, response ) ;
+      blogapi.createEntry( request, response, blogdb ) ;
       break ;
     default:
       handle_unknown_request( response ) ;
