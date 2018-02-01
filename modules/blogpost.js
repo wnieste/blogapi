@@ -1,18 +1,39 @@
 function handle_GET_request( request, response )  {
-  console.log( 'IN handle_GET_request' ) ;
-  response.writeHead( 200,  {
+  //  the /posts endpoint must use the GET method
+  if (request.method != 'GET' )
+  {
+    response.writeHead( 405, {
       'Content-Type' : 'text/plain'
     } ) ;
-  response.end( 'GET action executed' ) ;
+    response.end( `${request.method} not valid for this endpoint` ) ;
+  }
+  else
+  {
+    response.writeHead( 200,  {
+      'Content-Type' : 'text/plain'
+    } ) ;
+    response.end( 'GET action executed' ) ;
+  }
 }
 
 function handle_POST_request( request, response )  {
-  response.writeHead( 200,
-    {
+  //  the /post endpoint must use the POST method
+  if (request.method != 'POST' )
+  {
+    response.writeHead( 405, {
       'Content-Type' : 'text/plain'
-    }
-  ) ;
-  response.end( 'POST action executed' ) ;
+    } ) ;
+    response.end( `${request.method} not valid for this endpoint` ) ;
+  }
+  else
+  {
+    response.writeHead( 200,
+      {
+        'Content-Type' : 'text/plain'
+      }
+    ) ;
+    response.end( 'POST action executed' ) ;
+  }
 }
 
 exports.fetchEntries = handle_GET_request ;
