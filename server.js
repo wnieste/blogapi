@@ -8,28 +8,6 @@ const blogapi = require( './modules/blogpost' ) ;
 
 console.log( 'Started Node.js http server at http://127.0.0.1:' + port ) ;
 
-function handle_GET_request( response )  {
-  console.log( 'IN handle_GET_request' ) ;
-  response.writeHead( 200,  {
-      'Content-Type' : 'text/plain'
-    } ) ;
-  response.end( 'GET action executed' ) ;
-}
-
-function handle_POST_request( response )  {
-  console.log( 'IN handle_POST_request' ) ;
-  response.writeHead( 200,
-    {
-      'Content-Type' : 'text/plain'
-    }
-  ) ;
-  response.end( 'POST action executed' ) ;
-}
-
-function debug_module()  {
-  console.log( 'DEBUG:  testing blogpost module' ) ;
-} 
-
 function handle_unknown_request( response ) 
 {
   console.log( 'IN handle_unknown_request' ) ;
@@ -44,13 +22,13 @@ function handle_unknown_request( response )
 
 function handle_request( request, response )
 {
-  switch ( request.method ) 
+  switch ( request.url ) 
   {
-    case 'GET' :
-      blogapi.GET( response ) ;
+    case '/posts' :
+      blogapi.fetchEntries( request, response ) ;
       break ;
-    case 'POST' :
-      blogapi.POST( response ) ;
+    case '/post' :
+      blogapi.createEntry( request, response ) ;
       break ;
     default:
       handle_unknown_request( response ) ;

@@ -1,4 +1,4 @@
-function handle_GET_request( response )  {
+function handle_GET_request( request, response )  {
   console.log( 'IN handle_GET_request' ) ;
   response.writeHead( 200,  {
       'Content-Type' : 'text/plain'
@@ -6,7 +6,7 @@ function handle_GET_request( response )  {
   response.end( 'GET action executed' ) ;
 }
 
-function handle_POST_request( response )  {
+function handle_POST_request( request, response )  {
   response.writeHead( 200,
     {
       'Content-Type' : 'text/plain'
@@ -15,5 +15,5 @@ function handle_POST_request( response )  {
   response.end( 'POST action executed' ) ;
 }
 
-exports.GET = handle_GET_request ;
-exports.POST = handle_POST_request ;
+exports.fetchEntries = handle_GET_request ;
+exports.createEntry = handle_POST_request ;
