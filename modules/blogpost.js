@@ -38,6 +38,13 @@ function handle_POST_request( request, response, dbHandle )  {
   }
   else
   {
+    let dbInsert = 'INSERT INTO posts (title, body) VALUES ( "foo", "bar" )' ;
+    dbHandle.run( dbInsert, [], (err) => {
+      if (err)  {
+        return console.error( err.message ) ;
+      }
+      console.log ('inserted foo-bar' ) ;
+    } ) ;
     response.writeHead( 200,
       {
         'Content-Type' : 'text/plain'
