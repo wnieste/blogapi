@@ -9,3 +9,4 @@ command to trip the /posts endpoint -
 
 command to trip the /post endpoint -
    curl --header "Content-Type: application/json" http://localhost:8088/post -d @post.json
+   curl --header "Content-Type: application/json" http://localhost:8088/post -d @post1.json

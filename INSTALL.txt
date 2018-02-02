@@ -31,3 +31,5 @@ You then can follow the instructions in the ./test/README.txt file
 to use cURL to add blog entries (method postEntry() ) or list
 all blog entires (method fetchEntries() ).
 
+NOTE:  you will need the sqlite3 module as part of your node.js 
+environment to execute this reference implementation.
