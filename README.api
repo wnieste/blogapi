@@ -1,0 +1,18 @@
+
+
+  A description of the blogpost API.
+
+  Only two METHODS are defined for this API.
+
+  -----------------------------------------------------------------------
+  |  Method  |  URI          |  Description                             |
+  |----------|---------------|------------------------------------------|
+  |  GET     | /posts        |  Returns every blog post as an array of  |
+  |          |               |  posts.  Each post consists of three     |
+  |          |               |  elements - post_id, title, and body.    |
+  |          |               |  The data is returned as JSON objects.   |
+  |----------|---------------|------------------------------------------|
+  |  POST    | /post         |  Creates a new blog entry.  Data sent    | 
+  |          |               |  needs to be a JSON object with two      |
+  |          |               |  elements, title and body.               |
+  -----------------------------------------------------------------------

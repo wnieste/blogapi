@@ -1,0 +1,20 @@
+POST  
+{
+  "title": "<title>",
+  "body": "<body>"
+}
+GET  
+{
+  "list": [
+    {  "post_id": "<post_id>",
+       "title": "<title>",
+       "body": "<body>"
+    },
+    ...
+    {  "post_id": "<post_id>",
+       "title": "<title>",
+       "body": "<body>"
+    }
+  ]
+}
+
