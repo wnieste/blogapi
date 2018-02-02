@@ -1,0 +1,33 @@
+blogapi is a simple node.js module.  You will find it in the modules
+directory of this repo called, logically enough, blogapi.js.
+
+The API exposes two methods, fetchEntries and postEntry:  
+
+  fetchEntries( request, response, dbHandle )
+     postEntry( request, response, dbhandle )
+
+Both methods have the same signature modelled after the typical
+request listener formula used by a generic HTTP Server's 
+handle_request function and with an additional parameter
+to use the required backend store, a sqlite3 database.
+
+The blogapi module uses a sqlite3 database backend for persistance storage.
+An example database is provided in the ./tests directory, along with 
+several JSON files for testing the API.  See the README.txt file in
+the ./tests directory for more details.
+
+TO USE
+
+Simply require the blogapi module and then pass a request, response, and
+database reference the methods described above.  
+
+To support implementation a reference HTTP Server that implements the 
+blogapi has been provided in the ./test directory.  To use copy it 
+to the parent directory and then run:
+
+node server.js
+
+You then can follow the instructions in the ./test/README.txt file
+to use cURL to add blog entries (method postEntry() ) or list
+all blog entires (method fetchEntries() ).
+
