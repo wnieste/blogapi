@@ -64,7 +64,7 @@ function add_blog_post( request, response, dbHandle )  {
         }
 
         if (debug)  {
-          console.log ('inserted foo-bar' ) ;		//  debug
+          console.log ('inserted blog post' ) ;		//  debug
         }
 
       } ) ;
