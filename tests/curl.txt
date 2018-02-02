@@ -1,0 +1,11 @@
+cURL strings for testing.
+
+
+Assuming the server hosting this API is running on localhost and listening on port 8088.
+Furthermore we have a datafile with a single blog post in JSON format as post.json.
+
+for the /posts endpoint (assume running on localhost and listening to port 8088) -
+   curl --header "Content-Type: application/json" http://localhost:8088/posts
+
+for the /post endpoint -
+   curl -d @post.json --header "Content-Type: application/json" http://localhost:8088/posts
